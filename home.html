@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Howard HS AI Club Hackathon</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <style>
+        :root {
+            --dark-blue: #0a192f;
+            --medium-blue: #172a45;
+            --light-blue: #303c55;
+            --accent-blue: #64ffda;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--dark-blue);
+            color: #e6f1ff;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: var(--medium-blue);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e6f1ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--dark-blue), var(--medium-blue));
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #8892b0;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .challenge-section {
+            background-color: var(--medium-blue);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .challenge-card {
+            background-color: var(--light-blue);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .challenge-card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .colab-section {
+            background-color: var(--medium-blue);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .colab-frame {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .rules-section {
+            background-color: var(--medium-blue);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .rules-list {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+
+        .rules-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .rules-list li::before {
+            content: "•";
+            color: var(--accent-blue);
+            position: absolute;
+            left: 0;
+        }
+
+        .activity-tracker {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--medium-blue);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            background-color: var(--accent-blue);
+            color: var(--dark-blue);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            background-color: var(--medium-blue);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">Howard HS AI Club</div>
+            <div class="nav-links">
+                <a href="#challenges">Challenges</a>
+                <a href="#workspace">Workspace</a>
+                <a href="#rules">Rules</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>County-Wide AI Hackathon</h1>
+        <p>Join Howard High School's AI Club for an exciting challenge testing your artificial intelligence and programming skills!</p>
+        <button style="margin-top: 2rem;">Register Now</button>
+    </section>
+
+    <div class="content">
+        <section id="challenges" class="challenge-section">
+            <h2>Challenges</h2>
+            <div class="challenge-grid">
+                <div class="challenge-card">
+                    <h3>Beginner Track</h3>
+                    <p>Perfect for those just starting their AI journey. Learn basic concepts and implement simple models.</p>
+                    <button style="margin-top: 1rem;">View Challenges</button>
+                </div>
+                <div class="challenge-card">
+                    <h3>Intermediate Track</h3>
+                    <p>Ready for more complex problems? Take on machine learning challenges with real-world applications.</p>
+                    <button style="margin-top: 1rem;">View Challenges</button>
+                </div>
+                <div class="challenge-card">
+                    <h3>Advanced Track</h3>
+                    <p>Push your limits with advanced AI concepts and sophisticated implementation challenges.</p>
+                    <button style="margin-top: 1rem;">View Challenges</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="workspace" class="colab-section">
+            <h2>Workspace</h2>
+            <p>Complete your challenges in our monitored Google Colab environment:</p>
+            <iframe class="colab-frame" src="about:blank"></iframe>
+            <p style="color: #8892b0; margin-top: 1rem;">Note: Your activity is being monitored to ensure fair competition.</p>
+        </section>
+
+        <section id="rules" class="rules-section">
+            <h2>Rules & Guidelines</h2>
+            <ul class="rules-list">
+                <li>All work must be original and completed during the hackathon</li>
+                <li>No use of external AI tools or assistants</li>
+                <li>Collaboration is not allowed unless specified</li>
+                <li>All code must be written in the provided Google Colab environment</li>
+                <li>Submissions will be checked for plagiarism</li>
+                <li>Time limits must be strictly followed</li>
+            </ul>
+        </section>
+    </div>
+
+    <div id="activity-tracker" class="activity-tracker">
+        <!-- Activity tracker component will be mounted here -->
+    </div>
+
+    <footer>
+        <p>Organized by Howard High School AI Club</p>
+        <p style="color: #8892b0; margin-top: 0.5rem;">© 2024 All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Placeholder for Google Colab integration
+        // You'll need to replace this with actual Colab notebook URL
+        document.querySelector('.colab-frame').src = 'https://colab.research.google.com';
+
+        // Mount activity tracker component
+        const tracker = document.getElementById('activity-tracker');
+        // Activity tracker component will be initialized here
+    </script>
+</body>
+</html>
