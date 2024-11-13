@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenges - Howard High School AI Club Hackathon</title>
+    <title>Challenges - Howard HS AI Club Hackathon</title>
     <style>
         :root {
             --dark-blue: #0a192f;
@@ -70,64 +70,65 @@
             padding: 2rem;
         }
 
-        .challenge-container {
+        .difficulty-section {
+            margin-bottom: 2rem;
+        }
+
+        .difficulty-header {
+            background-color: var(--medium-blue);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .difficulty-header:hover {
+            background-color: var(--light-blue);
+        }
+
+        .difficulty-content {
+            display: none;
+            padding: 1rem;
+        }
+
+        .difficulty-content.active {
+            display: block;
+        }
+
+        .challenge-card {
             background-color: var(--medium-blue);
             border-radius: 10px;
             padding: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
         }
 
-        .challenge-header {
+        .challenge-title {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            margin-bottom: 2rem;
+            align-items: center;
         }
 
         .difficulty-badge {
             padding: 0.5rem 1rem;
             border-radius: 20px;
-            font-weight: bold;
             font-size: 0.9rem;
+            font-weight: bold;
         }
 
-        .easy {
-            background-color: #4CAF50;
-        }
-
-        .medium {
-            background-color: #FF9800;
-        }
-
-        .hard {
-            background-color: #f44336;
-        }
-
-        .challenge-description {
-            background-color: var(--light-blue);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-        }
-
-        .colab-container {
-            background-color: var(--light-blue);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-        }
-
-        .colab-frame {
-            width: 100%;
-            height: 800px;
-            border: none;
-            border-radius: 8px;
-        }
+        .easy { background-color: #4CAF50; }
+        .medium { background-color: #FF9800; }
+        .hard { background-color: #f44336; }
 
         .requirements-list {
             list-style-type: none;
             padding-left: 1rem;
-            margin-top: 1rem;
+            margin: 1rem 0;
         }
 
         .requirements-list li {
@@ -143,30 +144,37 @@
             left: 0;
         }
 
+        .colab-frame {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 1rem;
+            background-color: var(--light-blue);
+        }
+
+        .arrow {
+            transition: transform 0.3s;
+        }
+
+        .active .arrow {
+            transform: rotate(180deg);
+        }
+
         .time-limit {
             display: inline-block;
-            background-color: var(--dark-blue);
+            background-color: var(--light-blue);
             padding: 0.5rem 1rem;
             border-radius: 4px;
             margin-top: 1rem;
-            font-weight: bold;
-        }
-
-        .activity-tracker {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: var(--medium-blue);
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-content">
-            <div class="logo">Howard High School AI Club</div>
+            <div class="logo">Howard HS AI Club</div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="#easy">Easy</a>
@@ -177,90 +185,207 @@
     </nav>
 
     <div class="content">
-        <!-- Easy Challenge -->
-        <section id="easy" class="challenge-container">
-            <div class="challenge-header">
-                <h2>Sentiment Analysis with NLTK</h2>
-                <span class="difficulty-badge easy">Easy</span>
+        <!-- Easy Section -->
+        <div class="difficulty-section" id="easy">
+            <div class="difficulty-header" onclick="toggleSection('easy-content')">
+                <h2>Easy Challenges</h2>
+                <span class="arrow">▼</span>
             </div>
-            
-            <div class="challenge-description">
-                <p>Build a simple sentiment analysis model using NLTK to analyze movie reviews. This beginner-friendly challenge will introduce you to natural language processing and basic machine learning concepts.</p>
-                
-                <h3 style="margin-top: 1.5rem">Requirements:</h3>
-                <ul class="requirements-list">
-                    <li>Use NLTK's built-in movie reviews dataset</li>
-                    <li>Implement basic text preprocessing</li>
-                    <li>Create a simple classification model</li>
-                    <li>Achieve at least 70% accuracy</li>
-                </ul>
-                
-                <div class="time-limit">Time Limit: 2 hours</div>
-            </div>
+            <div class="difficulty-content" id="easy-content">
+                <!-- Easy Challenge 1 -->
+                <div class="challenge-card">
+                    <div class="challenge-title">
+                        <h3>Sentiment Analysis with NLTK</h3>
+                        <span class="difficulty-badge easy">Easy</span>
+                    </div>
+                    <p>Build a simple sentiment analysis model using NLTK to analyze movie reviews.</p>
+                    <ul class="requirements-list">
+                        <li>Use NLTK's built-in movie reviews dataset</li>
+                        <li>Implement basic text preprocessing</li>
+                        <li>Create a simple classification model</li>
+                        <li>Achieve at least 70% accuracy</li>
+                    </ul>
+                    <div class="time-limit">Time Limit: 2 hours</div>
+                    <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+                </div>
 
-            <div class="colab-container">
-                <h3>Workspace:</h3>
-                <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
-            </div>
-        </section>
+                <!-- Easy Challenge 2 -->
+                <div class="challenge-card">
+                    <div class="challenge-title">
+                        <h3>Linear Regression Housing Prices</h3>
+                        <span class="difficulty-badge easy">Easy</span>
+                    </div>
+                    <p>Implement a linear regression model to predict housing prices.</p>
+                    <ul class="requirements-list">
+                        <li>Load and preprocess the Boston Housing dataset</li>
+                        <li>Implement feature scaling</li>
+                        <li>Build a linear regression model from scratch</li>
+                        <li>Visualize the results</li>
+                    </ul>
+                    <div class="time-limit">Time Limit: 1.5 hours</div>
+                    <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+                </div>
 
-        <!-- Medium Challenge -->
-        <section id="medium" class="challenge-container">
-            <div class="challenge-header">
-                <h2>Image Classification with CNN</h2>
-                <span class="difficulty-badge medium">Medium</span>
+                <!-- Easy Challenge 3 -->
+                <div class="challenge-card">
+                    <div class="challenge-title">
+                        <h3>Basic Image Classification</h3>
+                        <span class="difficulty-badge easy">Easy</span>
+                    </div>
+                    <p>Create a simple neural network to classify MNIST handwritten digits.</p>
+                    <ul class="requirements-list">
+                        <li>Load and preprocess MNIST dataset</li>
+                        <li>Build a simple neural network</li>
+                        <li>Train the model</li>
+                        <li>Achieve at least 95% accuracy</li>
+                    </ul>
+                    <div class="time-limit">Time Limit: 2 hours</div>
+                    <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+                </div>
             </div>
-            
-            <div class="challenge-description">
-                <p>Design and train a Convolutional Neural Network (CNN) to classify images from the CIFAR-10 dataset. This challenge will test your understanding of deep learning and computer vision concepts.</p>
-                
-                <h3 style="margin-top: 1.5rem">Requirements:</h3>
-                <ul class="requirements-list">
-                    <li>Build a CNN architecture from scratch</li>
-                    <li>Implement data augmentation</li>
-                    <li>Use proper training/validation split</li>
-                    <li>Achieve at least 80% accuracy</li>
-                </ul>
-                
-                <div class="time-limit">Time Limit: 3 hours</div>
-            </div>
+        </div>
 
-            <div class="colab-container">
-                <h3>Workspace:</h3>
-                <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+        <!-- Medium Section -->
+        <div class="difficulty-section" id="medium">
+            <div class="difficulty-header" onclick="toggleSection('medium-content')">
+                <h2>Medium Challenges</h2>
+                <span class="arrow">▼</span>
             </div>
-        </section>
+            <div class="difficulty-content" id="medium-content">
+                <!-- Medium Challenge 1 -->
+                <div class="challenge-card">
+                    <div class="challenge-title">
+                        <h3>Image Classification with CNN</h3>
+                        <span class="difficulty-badge medium">Medium</span>
+                    </div>
+                    <p>Design and train a CNN to classify images from the CIFAR-10 dataset.</p>
+                    <ul class="requirements-list">
+                        <li>Build a CNN architecture from scratch</li>
+                        <li>Implement data augmentation</li>
+                        <li>Use proper training/validation split</li>
+                        <li>Achieve at least 80% accuracy</li>
+                    </ul>
+                    <div class="time-limit">Time Limit: 3 hours</div>
+                    <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+                </div>
 
-        <!-- Hard Challenge -->
-        <section id="hard" class="challenge-container">
-            <div class="challenge-header">
-                <h2>Generative AI Chat Bot</h2>
-                <span class="difficulty-badge hard">Hard</span>
-            </div>
-            
-            <div class="challenge-description">
-                <p>Create a transformer-based chatbot that can engage in meaningful conversations about a specific topic. This advanced challenge will test your understanding of transformer architecture and natural language generation.</p>
-                
-                <h3 style="margin-top: 1.5rem">Requirements:</h3>
-                <ul class="requirements-list">
-                    <li>Implement a transformer architecture</li>
-                    <li>Train on a custom dataset</li>
-                    <li>Handle context and maintain conversation flow</li>
-                    <li>Implement beam search for response generation</li>
-                </ul>
-                
-                <div class="time-limit">Time Limit: 4 hours</div>
-            </div>
+                <!-- Medium Challenge 2 -->
+                <div class="challenge-card">
+                    <div class="challenge-title">
+                        <h3>Time Series Forecasting</h3>
+                        <span class="difficulty-badge medium">Medium</span>
+                    </div>
+                    <p>Implement an LSTM model for stock price prediction.</p>
+                    <ul class="requirements-list">
+                        <li>Process time series data</li>
+                        <li>Build an LSTM model</li>
+                        <li>Implement sliding window technique</li>
+                        <li>Make future predictions</li>
+                    </ul>
+                    <div class="time-limit">Time Limit: 3 hours</div>
+                    <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+                </div>
 
-            <div class="colab-container">
-                <h3>Workspace:</h3>
-                <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+                <!-- Medium Challenge 3 -->
+                <div class="challenge-card">
+                    <div class="challenge-title">
+                        <h3>Natural Language Generation</h3>
+                        <span class="difficulty-badge medium">Medium</span>
+                    </div>
+                    <p>Create a text generation model using RNNs.</p>
+                    <ul class="requirements-list">
+                        <li>Preprocess text data</li>
+                        <li>Implement character-level RNN</li>
+                        <li>Train the model</li>
+                        <li>Generate coherent text</li>
+                    </ul>
+                    <div class="time-limit">Time Limit: 3 hours</div>
+                    <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+                </div>
             </div>
-        </section>
+        </div>
+
+        <!-- Hard Section -->
+        <div class="difficulty-section" id="hard">
+            <div class="difficulty-header" onclick="toggleSection('hard-content')">
+                <h2>Hard Challenges</h2>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="difficulty-content" id="hard-content">
+                <!-- Hard Challenge 1 -->
+                <div class="challenge-card">
+                    <div class="challenge-title">
+                        <h3>Generative AI Chat Bot</h3>
+                        <span class="difficulty-badge hard">Hard</span>
+                    </div>
+                    <p>Create a transformer-based chatbot for specific topic discussions.</p>
+                    <ul class="requirements-list">
+                        <li>Implement transformer architecture</li>
+                        <li>Train on custom dataset</li>
+                        <li>Handle context and maintain conversation flow</li>
+                        <li>Implement beam search</li>
+                    </ul>
+                    <div class="time-limit">Time Limit: 4 hours</div>
+                    <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+                </div>
+
+                <!-- Hard Challenge 2 -->
+                <div class="challenge-card">
+                    <div class="challenge-title">
+                        <h3>Reinforcement Learning Game AI</h3>
+                        <span class="difficulty-badge hard">Hard</span>
+                    </div>
+                    <p>Implement a reinforcement learning agent to play a complex game.</p>
+                    <ul class="requirements-list">
+                        <li>Implement DQN algorithm</li>
+                        <li>Create custom environment</li>
+                        <li>Train the agent</li>
+                        <li>Achieve specified performance threshold</li>
+                    </ul>
+                    <div class="time-limit">Time Limit: 4 hours</div>
+                    <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+                </div>
+
+                <!-- Hard Challenge 3 -->
+                <div class="challenge-card">
+                    <div class="challenge-title">
+                        <h3>GANs for Image Generation</h3>
+                        <span class="difficulty-badge hard">Hard</span>
+                    </div>
+                    <p>Build a GAN to generate realistic images of a specific category.</p>
+                    <ul class="requirements-list">
+                        <li>Implement DCGAN architecture</li>
+                        <li>Handle mode collapse</li>
+                        <li>Implement custom loss functions</li>
+                        <li>Generate high-quality images</li>
+                    </ul>
+                    <div class="time-limit">Time Limit: 4 hours</div>
+                    <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="activity-tracker" class="activity-tracker">
-        <!-- Activity tracker component will be mounted here -->
-    </div>
+    <script>
+        function toggleSection(id) {
+            const content = document.getElementById(id);
+            const header = content.previousElementSibling;
+            content.classList.toggle('active');
+            header.classList.toggle('active');
+        }
+
+        // Open the section if its ID is in the URL
+        window.onload = function() {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const content = document.getElementById(hash + '-content');
+                if (content) {
+                    content.classList.add('active');
+                    content.previousElementSibling.classList.add('active');
+                    content.scrollIntoView();
+                }
+            }
+        }
+    </script>
 </body>
 </html>
