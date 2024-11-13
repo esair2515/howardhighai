@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenges - Howard High School AI Club Hackathon</title>
+    <style>
+        :root {
+            --dark-blue: #0a192f;
+            --medium-blue: #172a45;
+            --light-blue: #303c55;
+            --accent-blue: #64ffda;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--dark-blue);
+            color: #e6f1ff;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: var(--medium-blue);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e6f1ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 6rem auto 2rem;
+            padding: 2rem;
+        }
+
+        .challenge-container {
+            background-color: var(--medium-blue);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .challenge-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .difficulty-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .easy {
+            background-color: #4CAF50;
+        }
+
+        .medium {
+            background-color: #FF9800;
+        }
+
+        .hard {
+            background-color: #f44336;
+        }
+
+        .challenge-description {
+            background-color: var(--light-blue);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .colab-container {
+            background-color: var(--light-blue);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .colab-frame {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .requirements-list {
+            list-style-type: none;
+            padding-left: 1rem;
+            margin-top: 1rem;
+        }
+
+        .requirements-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .requirements-list li::before {
+            content: "•";
+            color: var(--accent-blue);
+            position: absolute;
+            left: 0;
+        }
+
+        .time-limit {
+            display: inline-block;
+            background-color: var(--dark-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .activity-tracker {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--medium-blue);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">Howard HS AI Club</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#easy">Easy</a>
+                <a href="#medium">Medium</a>
+                <a href="#hard">Hard</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <!-- Easy Challenge -->
+        <section id="easy" class="challenge-container">
+            <div class="challenge-header">
+                <h2>Sentiment Analysis with NLTK</h2>
+                <span class="difficulty-badge easy">Easy</span>
+            </div>
+            
+            <div class="challenge-description">
+                <p>Build a simple sentiment analysis model using NLTK to analyze movie reviews. This beginner-friendly challenge will introduce you to natural language processing and basic machine learning concepts.</p>
+                
+                <h3 style="margin-top: 1.5rem">Requirements:</h3>
+                <ul class="requirements-list">
+                    <li>Use NLTK's built-in movie reviews dataset</li>
+                    <li>Implement basic text preprocessing</li>
+                    <li>Create a simple classification model</li>
+                    <li>Achieve at least 70% accuracy</li>
+                </ul>
+                
+                <div class="time-limit">Time Limit: 2 hours</div>
+            </div>
+
+            <div class="colab-container">
+                <h3>Workspace:</h3>
+                <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+            </div>
+        </section>
+
+        <!-- Medium Challenge -->
+        <section id="medium" class="challenge-container">
+            <div class="challenge-header">
+                <h2>Image Classification with CNN</h2>
+                <span class="difficulty-badge medium">Medium</span>
+            </div>
+            
+            <div class="challenge-description">
+                <p>Design and train a Convolutional Neural Network (CNN) to classify images from the CIFAR-10 dataset. This challenge will test your understanding of deep learning and computer vision concepts.</p>
+                
+                <h3 style="margin-top: 1.5rem">Requirements:</h3>
+                <ul class="requirements-list">
+                    <li>Build a CNN architecture from scratch</li>
+                    <li>Implement data augmentation</li>
+                    <li>Use proper training/validation split</li>
+                    <li>Achieve at least 80% accuracy</li>
+                </ul>
+                
+                <div class="time-limit">Time Limit: 3 hours</div>
+            </div>
+
+            <div class="colab-container">
+                <h3>Workspace:</h3>
+                <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+            </div>
+        </section>
+
+        <!-- Hard Challenge -->
+        <section id="hard" class="challenge-container">
+            <div class="challenge-header">
+                <h2>Generative AI Chat Bot</h2>
+                <span class="difficulty-badge hard">Hard</span>
+            </div>
+            
+            <div class="challenge-description">
+                <p>Create a transformer-based chatbot that can engage in meaningful conversations about a specific topic. This advanced challenge will test your understanding of transformer architecture and natural language generation.</p>
+                
+                <h3 style="margin-top: 1.5rem">Requirements:</h3>
+                <ul class="requirements-list">
+                    <li>Implement a transformer architecture</li>
+                    <li>Train on a custom dataset</li>
+                    <li>Handle context and maintain conversation flow</li>
+                    <li>Implement beam search for response generation</li>
+                </ul>
+                
+                <div class="time-limit">Time Limit: 4 hours</div>
+            </div>
+
+            <div class="colab-container">
+                <h3>Workspace:</h3>
+                <iframe class="colab-frame" src="https://colab.research.google.com"></iframe>
+            </div>
+        </section>
+    </div>
+
+    <div id="activity-tracker" class="activity-tracker">
+        <!-- Activity tracker component will be mounted here -->
+    </div>
+</body>
+</html>
