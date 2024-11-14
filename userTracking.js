@@ -3,7 +3,13 @@ import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/
 import { getFirestore, doc, setDoc, updateDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
 const firebaseConfig = {
-    // Your existing Firebase config
+  apiKey: "AIzaSyAkCYA0qurlOCUqHbMDNCynRmFy469M1uQ",
+  authDomain: "howard-ai-hackathon.firebaseapp.com",
+  projectId: "howard-ai-hackathon",
+  storageBucket: "howard-ai-hackathon.firebasestorage.app",
+  messagingSenderId: "755448593026",
+  appId: "1:755448593026:web:14c2e952298a8270a3d29b",
+  measurementId: "G-JNW926D6LK"
 };
 
 const app = initializeApp(firebaseConfig);
