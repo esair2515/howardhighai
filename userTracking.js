@@ -16,30 +16,105 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Add console logs for debugging
-onAuthStateChanged(auth, async (user) => {
-    console.log('Auth state changed:', user);
-    if (user) {
-        try {
-            // Log user visit
-            console.log('Attempting to log user data...');
-            await setDoc(doc(db, 'users', user.uid), {
-                email: user.email,
-                lastVisit: serverTimestamp()
-            }, { merge: true });
-            console.log('User data logged successfully');
+class CheatDetector {
+    constructor(userId, email) {
+        this.userId = userId;
+        this.email = email;
+        this.sessionStart = Date.now();
+        this.setupEventListeners();
+    }
 
-            // Log page visit
-            await setDoc(doc(db, 'userActivity', `${user.uid}_${Date.now()}`), {
-                userId: user.uid,
-                email: user.email,
+    async logEvent(eventType, details = {}) {
+        try {
+            const docId = `${this.userId}_${Date.now()}`;
+            await setDoc(doc(db, 'userActivity', docId), {
+                userId: this.userId,
+                email: this.email,
                 timestamp: serverTimestamp(),
-                type: 'pageView',
+                eventType,
+                details,
+                sessionDuration: Math.floor((Date.now() - this.sessionStart) / 1000),
                 page: window.location.pathname
             });
-            console.log('Activity logged successfully');
         } catch (error) {
-            console.error('Error logging activity:', error);
+            console.error('Logging error:', error);
         }
+    }
+
+    setupEventListeners() {
+        // Track tab visibility changes
+        document.addEventListener('visibilitychange', () => {
+            this.logEvent('tabSwitch', {
+                hidden: document.hidden,
+                time: new Date().toISOString()
+            });
+        });
+
+        // Track copy/paste events
+        document.addEventListener('copy', () => {
+            this.logEvent('copy', {
+                action: 'copied',
+                time: new Date().toISOString()
+            });
+        });
+
+        document.addEventListener('paste', () => {
+            this.logEvent('paste', {
+                action: 'pasted',
+                time: new Date().toISOString()
+            });
+        });
+
+        // Track mouse leaving window
+        document.addEventListener('mouseout', (e) => {
+            if (e.relatedTarget === null) {
+                this.logEvent('mouseLeave', {
+                    time: new Date().toISOString()
+                });
+            }
+        });
+
+        // Track keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && 
+                ['c', 'v', 'f', 't', 'n'].includes(e.key.toLowerCase())) {
+                this.logEvent('keyboardShortcut', {
+                    key: e.key,
+                    ctrl: e.ctrlKey,
+                    meta: e.metaKey,
+                    time: new Date().toISOString()
+                });
+            }
+        });
+
+        // Track challenge interactions
+        document.querySelectorAll('.challenge-card').forEach(card => {
+            card.addEventListener('click', () => {
+                this.logEvent('challengeInteraction', {
+                    challengeId: card.dataset.challengeId,
+                    time: new Date().toISOString()
+                });
+            });
+        });
+
+        // Track session start and end
+        this.logEvent('sessionStart');
+        window.addEventListener('beforeunload', () => {
+            this.logEvent('sessionEnd');
+        });
+    }
+}
+
+// Initialize tracking when user is authenticated
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        window.cheatDetector = new CheatDetector(user.uid, user.email);
+        
+        // Log initial user data
+        setDoc(doc(db, 'users', user.uid), {
+            email: user.email,
+            lastLogin: serverTimestamp(),
+            sessionStart: new Date().toISOString()
+        }, { merge: true });
     }
 });
